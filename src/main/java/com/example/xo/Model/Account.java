@@ -1,17 +1,23 @@
 package com.example.xo.Model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
-public class User {
+public class Account {
     
     @Id
     @GeneratedValue
     private Long id;
     private String username;
     private String password;
+
+    @OneToMany(mappedBy = "account")
+    private List<Ticket> tickets;
 
     public Long getId() {
         return id;
@@ -31,5 +37,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
 }
