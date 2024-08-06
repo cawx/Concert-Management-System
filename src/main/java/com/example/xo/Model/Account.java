@@ -17,6 +17,7 @@ public class Account {
     private Long id;
     private String username;
     private String password;
+    private String role;
 
     @OneToMany(mappedBy = "account")
     private List<Ticket> tickets;
@@ -53,5 +54,11 @@ public class Account {
     }
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+    public String getRole() {
+        return role;
+    }
+    public void setRole(String role) {
+        this.role = role;
     }
 }
