@@ -2,11 +2,12 @@ package com.example.xo.Model;
 
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -15,16 +16,19 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotEmpty(message = "Username cant be empty.")
     private String username;
+
+    @NotEmpty(message = "Password cant be empty.")
     private String password;
+
     private String role;
 
     @OneToMany(mappedBy = "account")
     private List<Ticket> tickets;
 
-    @ManyToMany
-    private List<Role> roles;
-
+    // getters and setters
     public Long getId() {
         return id;
     }
@@ -48,12 +52,6 @@ public class Account {
     }
     public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
-    }
-    public List<Role> getRoles() {
-        return roles;
-    }
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
     }
     public String getRole() {
         return role;

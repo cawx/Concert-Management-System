@@ -26,7 +26,7 @@ public class AccountDetailService implements UserDetailsService {
             return User.builder()
                        .username(acc.getUsername())
                        .password(acc.getPassword())
-                       .authorities("USER")
+                       .authorities(acc.getRole())
                        .build();
         } else {
             throw new UsernameNotFoundException("User not found with username: " + username);
