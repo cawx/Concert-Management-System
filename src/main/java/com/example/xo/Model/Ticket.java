@@ -17,8 +17,10 @@ public class Ticket {
     private Concert concert;
 
     @ManyToOne
-    @JoinColumn(name = "account_id", nullable = false)
+    @JoinColumn(name = "account_id", nullable = true)
     private Account account;
+
+    private Boolean onSale;
 
     public void setId(Long id) {
         this.id = id;
@@ -37,5 +39,11 @@ public class Ticket {
     }
     public void setAccount(Account account) {
         this.account = account;
+    }
+    public Boolean getOnSale() {
+        return onSale;
+    }
+    public void setOnSale(Boolean onSale) {
+        this.onSale = onSale;
     }
 }

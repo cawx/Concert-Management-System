@@ -16,6 +16,7 @@ public class Concert {
     private Long id;
     private String title;
     private LocalDateTime eventDate;
+    private int ticketCount;
     /* 
     mappedby is used to specify the owner side of the relationship (the side with foreign keys).
     its used to establish bidirectional relationships between 2 entities. the value is the name of
@@ -47,5 +48,11 @@ public class Concert {
     }
     public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
+    }
+    public int getTicketCount() {
+        return ticketCount;
+    }
+    public void setTicketCount(int ticketCount) {
+        this.ticketCount = ticketCount;
     }
 }   
