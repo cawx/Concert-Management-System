@@ -1,7 +1,5 @@
 package com.example.xo.Service;
 
-import java.util.Optional;
-
 import javax.security.auth.login.AccountNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +30,15 @@ public class TicketService {
             .orElseThrow(() -> new TicketNotFoundException("Ticket not found with id " + id));
         ticketRepository.delete(ticket);
     }
-
-    public void buyTicket(Long userid) throws AccountNotFoundException {
-        Optional<Account> acc = accountRepository.findById(userid);
-        acc.orElseThrow(() -> new AccountNotFoundException("Account not found"));
+    // logic for buying the ticket
+    public void buyTicket(Long userid, Long concertid) throws AccountNotFoundException {
+        Account acc = accountRepository.findById(userid)
+            .orElseThrow(() -> new AccountNotFoundException("Account not found"));
+        Ticket ticket = ticketRepository.findTopByConcertIdAndAccountIsNull(concertid)
+            .orElseThrow(() -> new TicketNotFoundException("Tickets are unavailable."));
+        ticket.setAccount(acc);
+        ticket.setOnSale(false);
+        ticketRepository.save(ticket);
     }
 
 }

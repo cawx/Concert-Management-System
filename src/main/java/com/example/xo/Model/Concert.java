@@ -3,6 +3,8 @@ package com.example.xo.Model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -23,6 +25,7 @@ public class Concert {
     the property that owns the relationship.
     */ 
     @OneToMany(mappedBy = "concert") 
+    @JsonIgnore
     private List<Ticket> tickets;
 
     public Long getId() {

@@ -1,5 +1,7 @@
 package com.example.xo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -14,10 +16,12 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name = "concert_id", nullable = false)
+    @JsonIgnore
     private Concert concert;
 
     @ManyToOne
     @JoinColumn(name = "account_id", nullable = true)
+    @JsonIgnore
     private Account account;
 
     private Boolean onSale;

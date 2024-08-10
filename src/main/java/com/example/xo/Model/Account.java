@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,6 +28,7 @@ public class Account {
     private String role;
 
     @OneToMany(mappedBy = "account")
+    @JsonIgnore
     private List<Ticket> tickets;
 
     // getters and setters

@@ -48,7 +48,6 @@ public class ConcertService {
         for(int i = 0; i < amount; i++) {
             Ticket newticket = new Ticket();
             newticket.setConcert(concert);
-            newticket.setOnSale(true);
             ticketRepository.save(newticket);
         }
     }
